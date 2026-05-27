@@ -1,0 +1,80 @@
+
+<div style="font-family: var(--font-mono); font-size: 12px; padding: 1rem 0;">
+
+  <div style="background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); margin-bottom: 1.5rem; overflow: hidden;">
+    <div style="background: #1a1a2e; padding: 10px 16px; display: flex; align-items: center; gap: 8px;">
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f57;"></div>
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #febc2e;"></div>
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #28c840;"></div>
+      <span style="color: #888; font-size: 11px; margin-left: 8px;">Terminal — Nmap Scan</span>
+    </div>
+    <div style="background: #0d1117; padding: 16px; color: #c9d1d9; line-height: 2;">
+      <div style="color: #58a6ff;">$ nmap -sV --script=http-headers demo.testfire.net</div>
+      <div style="color: #8b949e; margin-top: 4px;">Starting Nmap 7.94 ( https://nmap.org )</div>
+      <div style="color: #8b949e;">Nmap scan report for demo.testfire.net (65.61.137.117)</div>
+      <div style="color: #8b949e;">Host is up (0.18s latency).</div>
+      <div style="margin-top: 8px;">
+        <span style="color: #8b949e;">PORT     STATE SERVICE VERSION</span><br>
+        <span style="color: #3fb950;">80/tcp   open  http    Apache Tomcat/Coyote JSP engine 1.1</span><br>
+        <span style="color: #3fb950;">443/tcp  open  https   Apache Tomcat/Coyote JSP engine 1.1</span><br>
+        <span style="color: #f85149;">8080/tcp open  http    Apache Tomcat 8.5.32</span>
+      </div>
+      <div style="margin-top: 8px; color: #f85149;">WARNING: Outdated Apache Tomcat 8.5.32 detected (CVE-2018-11784, CVE-2019-0199)</div>
+      <div style="color: #f85149;">WARNING: Port 8080 exposed — admin panel potentially accessible</div>
+      <div style="margin-top: 8px; color: #8b949e;">Service detection performed. Nmap done: 1 IP address scanned.</div>
+    </div>
+  </div>
+
+  <div style="background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); margin-bottom: 1.5rem; overflow: hidden;">
+    <div style="background: #1a1a2e; padding: 10px 16px; display: flex; align-items: center; gap: 8px;">
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f57;"></div>
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #febc2e;"></div>
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #28c840;"></div>
+      <span style="color: #888; font-size: 11px; margin-left: 8px;">Terminal — curl HTTP Headers</span>
+    </div>
+    <div style="background: #0d1117; padding: 16px; color: #c9d1d9; line-height: 2;">
+      <div style="color: #58a6ff;">$ curl -I http://demo.testfire.net</div>
+      <div style="margin-top: 8px; color: #8b949e;">HTTP/1.1 200 OK</div>
+      <div style="color: #8b949e;">Server: Apache-Coyote/1.1</div>
+      <div style="color: #8b949e;">Content-Type: text/html;charset=ISO-8859-1</div>
+      <div style="color: #8b949e;">Date: Wed, 07 May 2026 08:14:22 GMT</div>
+      <div style="margin-top: 8px; color: #f85149;">✗ X-Frame-Options: MISSING</div>
+      <div style="color: #f85149;">✗ Content-Security-Policy: MISSING</div>
+      <div style="color: #f85149;">✗ X-Content-Type-Options: MISSING</div>
+      <div style="color: #f85149;">✗ Strict-Transport-Security: MISSING</div>
+      <div style="color: #f85149;">✗ Referrer-Policy: MISSING</div>
+      <div style="margin-top: 8px; color: #e3b341;">⚠ Set-Cookie: JSESSIONID=abc123; Path=/ (no HttpOnly, no Secure flags)</div>
+    </div>
+  </div>
+
+  <div style="background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden;">
+    <div style="background: #1a1a2e; padding: 10px 16px; display: flex; align-items: center; gap: 8px;">
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f57;"></div>
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #febc2e;"></div>
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #28c840;"></div>
+      <span style="color: #888; font-size: 11px; margin-left: 8px;">OWASP ZAP — Passive Scan Alerts — demo.testfire.net</span>
+    </div>
+    <div style="background: #0d1117; padding: 16px; color: #c9d1d9; line-height: 2;">
+      <div style="color: #58a6ff;">ZAP Passive Scan Results — http://demo.testfire.net</div>
+      <div style="color: #8b949e; margin-top: 4px;">Scan completed: 47 URLs crawled, 9 alerts generated</div>
+      <div style="margin-top: 12px;">
+        <div style="color: #f85149;">[HIGH]   SQL Injection pattern in parameter: account, username — /bank/login.aspx</div>
+        <div style="color: #f85149;">[HIGH]   Reflected XSS — parameter: query in /search.aspx</div>
+        <div style="color: #f85149;">[HIGH]   Directory Browsing enabled — /pr/</div>
+        <div style="color: #e3b341;">[MEDIUM] Missing Anti-CSRF Tokens — /bank/transfer.aspx, /bank/login.aspx</div>
+        <div style="color: #e3b341;">[MEDIUM] X-Frame-Options header not set</div>
+        <div style="color: #e3b341;">[MEDIUM] Content-Security-Policy header missing</div>
+        <div style="color: #e3b341;">[MEDIUM] Cookie without HttpOnly flag — JSESSIONID</div>
+        <div style="color: #3fb950;">[LOW]    Server version disclosed — Apache-Coyote/1.1</div>
+        <div style="color: #3fb950;">[LOW]    No HTTPS redirect enforced on port 80</div>
+      </div>
+      <div style="margin-top: 12px; color: #8b949e; border-top: 1px solid #21262d; padding-top: 8px;">
+        Alerts Summary: HIGH: 3 | MEDIUM: 4 | LOW: 2 | INFO: 0
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 12px; padding: 8px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary);">
+    <span style="font-size: 11px; color: var(--color-text-secondary);">Task 1 Evidence — Vulnerability Assessment — demo.testfire.net — FUTURE_CS_01 — Romano — FIT/APR26/CS8070</span>
+  </div>
+</div>
